@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+[ -f ~/.paths ] && source ~/.paths
+
 PLUGIN_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && cd .. && pwd)"
 source "${PLUGIN_DIR}/helper.sh"
 

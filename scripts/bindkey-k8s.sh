@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-PATH="${PATH}:${HOME}/.local/bin:${HOME}/.fzf/bin"
+[ -f ~/.paths ] && source ~/.paths
 
 context_name=$(kubectl config get-contexts -o name | sort | fzf-tmux -d 50% -r 20%)
 

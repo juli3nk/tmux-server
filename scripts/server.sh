@@ -21,7 +21,7 @@ show_ssh_infos() {
   local cmd="$(ps --tty "$(tmux display -p '#{pane_tty}')" -o command | grep "^[s]sh ")"
 
   if [ "$(echo "$cmd" | grep -c "@")" -gt 0 ]; then
-    result="$(echo "$cmd" | sed 's/ssh //')"
+    result="$(echo "$cmd" | sed 's/ssh //' | awk '{ print $1 }')"
   else
     ssh_host="$(echo "$cmd" | awk '{ print $2 }')"
     ssh_user="$(grep -A 5 "$ssh_host" ~/.ssh/config | grep -i "User" | awk '{ print $2 }')"
